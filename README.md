@@ -45,6 +45,8 @@ Your help would be appreciated! 💖
    Raise during the daytime:
    - Bare soil, dry grasslands, or any type of stone blocks slopes heat up quickly under the sun.
 
+2. Player is getting dragged on the ground when it's speed is too high 
+
 2. ~~**Weather-Driven Dynamics**~~
 
    ~~Rain, storms, and other weather conditions will dynamically alter wind behavior.~~
