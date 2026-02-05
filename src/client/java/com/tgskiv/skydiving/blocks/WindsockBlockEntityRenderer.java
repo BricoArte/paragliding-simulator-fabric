@@ -1,6 +1,5 @@
 package com.tgskiv.skydiving.blocks;
 
-import com.tgskiv.SkydivingModClient;
 import com.tgskiv.skydiving.blockentity.WindsockBlockEntity;
 import com.tgskiv.skydiving.flight.WindInterpolator;
 import net.minecraft.client.render.RenderLayer;
@@ -36,9 +35,8 @@ public class WindsockBlockEntityRenderer implements BlockEntityRenderer<Windsock
             matrices.push();
             // Translate to the center of the block (adjust if your model's pivot is different)
 
-            matrices.scale(3, 3, 3);
-
             matrices.translate(0.5, 0.5, 0.5);
+            matrices.scale(3, 3, 3);
             // Rotate around the Y-axis
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angleDegrees));
             // Translate back so the rotation is around the block's center

@@ -1,0 +1,21 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "group": "skydiving",
+  "category": "equipment",
+  "pattern": [
+    "CRI",
+    "CBI",
+    "CRI"
+  ],
+  "key": {
+    "C":  "minecraft:glass",
+    "R":  "minecraft:redstone" ,
+    "I":  "minecraft:iron_ingot",
+    "B":  "minecraft:compass" 
+  },
+  "result": {
+    "id": "paraglidingsimulator:vario",
+    "count": 1
+  },
+  "show_notification": true
+}

@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.tgskiv.mixin",
+  "refmap": "client-paraglidingsimulator-refmap.json",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "CameraMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

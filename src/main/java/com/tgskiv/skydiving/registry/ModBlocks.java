@@ -1,7 +1,7 @@
 package com.tgskiv.skydiving.registry;
 
 
-import com.tgskiv.SkydivingMod;
+import com.tgskiv.ParaglidingSimulator;
 import com.tgskiv.skydiving.block.WindsockBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -12,6 +12,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.ItemGroups;
 
 import static com.tgskiv.skydiving.block.WindsockBlock.ITEM_KEY;
 
@@ -41,7 +43,7 @@ public class ModBlocks {
     private static Block registerBlock(String name, Block block) {
         return Registry.register(
                 Registries.BLOCK,
-                Identifier.of(SkydivingMod.MOD_ID, name),
+                Identifier.of(ParaglidingSimulator.MOD_ID, name),
                 block
         );
     }
@@ -49,14 +51,16 @@ public class ModBlocks {
     private static Item registerBlockItem(String name, Item item) {
         return Registry.register(
                 Registries.ITEM,
-                Identifier.of(SkydivingMod.MOD_ID, name),
+                Identifier.of(ParaglidingSimulator.MOD_ID, name),
                 item
         );
     }
 
     // Called from your main mod initializer
     public static void registerModBlocks() {
-        SkydivingMod.LOGGER.info("Registering ModBlocks for " + SkydivingMod.MOD_ID);
-
+        ParaglidingSimulator.LOGGER.info("Registering ModBlocks for " + ParaglidingSimulator.MOD_ID);
+        // AÃ±adir al inventario creativo
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.add(WINDSOCK_ITEM));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.add(WINDSOCK_ITEM));
     }
 }

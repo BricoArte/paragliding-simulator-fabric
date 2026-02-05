@@ -1,6 +1,5 @@
 package com.tgskiv.skydiving.ui;
 
-import com.tgskiv.SkydivingModClient;
 import com.tgskiv.skydiving.flight.FlightUtils;
 import com.tgskiv.skydiving.flight.TerrainAirflowUtils;
 import com.tgskiv.skydiving.flight.WindInterpolator;
@@ -8,6 +7,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.RenderTickCounter;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec2f;
 import net.minecraft.util.math.Vec3d;
@@ -86,7 +86,7 @@ public class AirflowDebugOverlay implements HudRenderCallback {
 
 
         // Dot product text (existing)
-        String dotText = String.format("dot = %.2f", dot);
+        String dotText = Text.translatable("debug.paraglidingsimulator.dot", String.format("%.2f", dot)).getString();
         int dotTextY = PADDING + GRID_HEIGHT * CELL_SIZE + 5;
         drawContext.drawText(textRenderer, dotText, PADDING, dotTextY, 0xFFFFFF, false);
 
@@ -94,27 +94,32 @@ public class AirflowDebugOverlay implements HudRenderCallback {
         int spacing = 10;
 
         drawContext.drawText(textRenderer,
-                String.format("heightCompensatedWindSpeed: %.4f", FlightUtils.heightCompensatedWindSpeed),
+                Text.translatable("debug.paraglidingsimulator.height_comp_wind",
+                        String.format("%.4f", FlightUtils.heightCompensatedWindSpeed)).getString(),
                 PADDING, infoY, 0xAAAAFF, false);
         infoY += spacing;
 
         drawContext.drawText(textRenderer,
-                String.format("angularSpeed: %.2f", FlightUtils.angularSpeed),
+                Text.translatable("debug.paraglidingsimulator.angular_speed",
+                        String.format("%.2f", FlightUtils.angularSpeed)).getString(),
                 PADDING, infoY, 0xFFAAFF, false);
         infoY += spacing;
 
         drawContext.drawText(textRenderer,
-                String.format("spinFallDownwardBoost: %.4f", FlightUtils.spinFallDownwardBoost),
+                Text.translatable("debug.paraglidingsimulator.spin_fall_boost",
+                        String.format("%.4f", FlightUtils.spinFallDownwardBoost)).getString(),
                 PADDING, infoY, 0xFF7777, false);
         infoY += spacing;
 
         drawContext.drawText(textRenderer,
-                String.format("slopeStrengthInfluence: %.4f", FlightUtils.slopeStrengthInfluence),
+                Text.translatable("debug.paraglidingsimulator.slope_influence",
+                        String.format("%.4f", FlightUtils.slopeStrengthInfluence)).getString(),
                 PADDING, infoY, 0x7777FF, false);
         infoY += spacing;
 
         drawContext.drawText(textRenderer,
-                String.format("updraftStrength: %.4f", FlightUtils.updraftStrength),
+                Text.translatable("debug.paraglidingsimulator.updraft_strength",
+                        String.format("%.4f", FlightUtils.updraftStrength)).getString(),
                 PADDING, infoY, 0x77FF77, false);
         // infoY += spacing;
 

@@ -39,3 +39,10 @@ replay_*.log
 *.hprof
 *.jfr
 /.env
+
+# local docs / notes (do not publish)
+docs/registro_cambios.md
+docs/Informe_*.md
+CONTEXT.md
+.tmp-init.gradle
+TEMP_*.txt

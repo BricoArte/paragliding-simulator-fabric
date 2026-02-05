@@ -41,10 +41,10 @@ tasks.register('buildAndCopy') {
         }
 
         modsDir.listFiles({ dir, name ->
-            name.startsWith('skydivingmod') && name.endsWith('.jar') && !name.contains('-sources')
+            name.startsWith('paraglidingsimulator') && name.endsWith('.jar') && !name.contains('-sources')
         } as FilenameFilter)?.each { it.delete() }
 
-        def jarName = "skydivingmod-${project.version}.jar"
+        def jarName = "paraglidingsimulator-${project.version}.jar"
         def builtJar = new File(libsDir, jarName)
 
         if (builtJar.exists()) {

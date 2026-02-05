@@ -1,0 +1,21 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "group": "skydiving",
+  "category": "equipment",
+  "pattern": [
+    "WWW",
+    "SSS",
+    " R "
+  ],
+  "key": {
+    "S": "minecraft:string",
+    "W": "minecraft:white_wool",
+    "R": "minecraft:leather"
+  },
+  "result": {
+    "id": "paraglidingsimulator:paraglider",
+    "count": 1
+  },
+  "show_notification": true
+}
+

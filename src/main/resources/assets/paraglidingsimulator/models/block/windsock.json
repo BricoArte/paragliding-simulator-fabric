@@ -1,0 +1,7 @@
+﻿{
+	"parent": "block/cube_column",
+	"textures": {
+		"end": "paraglidingsimulator:block/brown_stick_texture",
+		"side": "paraglidingsimulator:block/brown_stick_texture"
+	}
+}

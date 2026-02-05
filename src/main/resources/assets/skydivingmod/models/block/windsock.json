@@ -1,7 +1,0 @@
-{
-	"parent": "block/cube_column",
-	"textures": {
-		"end": "skydivingmod:block/brown_stick_texture",
-		"side": "skydivingmod:block/brown_stick_texture"
-	}
-}

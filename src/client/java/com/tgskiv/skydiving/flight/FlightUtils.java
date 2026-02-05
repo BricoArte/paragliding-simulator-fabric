@@ -16,10 +16,7 @@ import org.slf4j.LoggerFactory;
 
 public class FlightUtils {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger("SkydivingMod");
-    static int ticks = 0;
-
-
+    public static final Logger LOGGER = LoggerFactory.getLogger("paraglidingsimulator");
     public static double heightCompensatedWindSpeed = 0;
     public static double spinFallDownwardBoost = 0;
     public static double angularSpeed = 0;
@@ -60,20 +57,18 @@ public class FlightUtils {
         heightCompensatedWindSpeed = windSpeed;
         int blocksBelow = FlightUtils.getBlocksBelowPlayer(player);
 
-        if (ticks % 60 == 0) {
-            LOGGER.info("Blocks below: {}", blocksBelow);
-            com.tgskiv.SkydivingMod.LOGGER.info("Blocks below: {}", blocksBelow);
-        }
-
-        ticks++;
-
         if (blocksBelow <=5) {
             heightCompensatedWindSpeed = heightCompensatedWindSpeed*0.3;
         } else if (blocksBelow <=10) {
             heightCompensatedWindSpeed = heightCompensatedWindSpeed*0.6;
         }
 
-        Vec3d push = windDirection.multiply(heightCompensatedWindSpeed);
+        double scaled = heightCompensatedWindSpeed * 0.1; // reduce wind influence for elytras
+        Vec3d push = windDirection.multiply(scaled);
+        double maxPush = 0.008; // cap to avoid runaway acceleration
+        if (push.lengthSquared() > maxPush * maxPush) {
+            push = push.normalize().multiply(maxPush);
+        }
 
         player.addVelocity(push);
     }
@@ -115,9 +110,13 @@ public class FlightUtils {
      * @param player ClientPlayerEntity
      * @param windDirection Vec3d
      */
-    public static void getUpdraftEffect(ClientPlayerEntity player, Vec3d windDirection) {
+    public static void getUpdraftEffect(ClientPlayerEntity player, Vec3d windDirection, double windSpeed) {
         ClientWorld world = MinecraftClient.getInstance().world;
         if (world == null) return;
+        if (windSpeed <= 0) {
+            updraftStrength = 0;
+            return;
+        }
 
         BlockPos origin = player.getBlockPos();
         float[][] heights = TerrainAirflowUtils.sampleHeightsAround(TerrainAirflowUtils.size, origin, world);
@@ -155,9 +154,10 @@ public class FlightUtils {
             altitudeFactor = (float) (1 - (heightAboveMaxTerrain - 10) / 10.0);
         }
 
+        double speedFactor = Math.min(Math.max(windSpeed / 0.1, 0.0), 1.0);
 
         // Final vertical effect multiplier
-        updraftStrength = dot * altitudeFactor * slopeStrengthInfluence * 0.03; // max boost ~0.03 when aligned
+        updraftStrength = dot * altitudeFactor * slopeStrengthInfluence * 0.06 * speedFactor; // max boost ~0.06 when alineado y viento max
     }
 
     /**
@@ -171,7 +171,8 @@ public class FlightUtils {
 
         // Apply vertical velocity
         Vec3d velocity = player.getVelocity();
-        player.setVelocity(velocity.x, velocity.y + updraftStrength, velocity.z);
+        double factor = (player.getVehicle() instanceof com.tgskiv.skydiving.entity.ParagliderEntity) ? 1.0 : 0.5;
+        player.setVelocity(velocity.x, velocity.y + updraftStrength * factor, velocity.z);
     }
 
 

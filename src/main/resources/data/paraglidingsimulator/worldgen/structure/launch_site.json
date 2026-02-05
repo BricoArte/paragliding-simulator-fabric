@@ -1,0 +1,7 @@
+{
+  "type": "paraglidingsimulator:launch_site",
+  "biomes": "#paraglidingsimulator:launch_site_biomes",
+  "spawn_overrides": {},
+  "step": "top_layer_modification",
+  "terrain_adaptation": "beard_thin"
+}

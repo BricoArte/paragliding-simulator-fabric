@@ -9,7 +9,7 @@ import net.minecraft.util.math.Vec3d;
 
 public record WindSyncPayload(Vec3d direction, double speed) implements CustomPayload {
 
-    public static final Identifier ID = Identifier.of("skydivingmod", "wind_sync");
+    public static final Identifier ID = Identifier.of("paraglidingsimulator", "wind_sync");
     public static final CustomPayload.Id<WindSyncPayload> PAYLOAD_ID = new CustomPayload.Id<>(ID);
 
     // https://wiki.fabricmc.net/tutorial:codec

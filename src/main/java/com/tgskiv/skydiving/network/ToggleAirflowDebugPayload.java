@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 
 public record ToggleAirflowDebugPayload(boolean visible) implements CustomPayload {
 
-    public static final Identifier ID = Identifier.of("skydivingmod", "toggle_airflow_debug");
+    public static final Identifier ID = Identifier.of("paraglidingsimulator", "toggle_airflow_debug");
     public static final CustomPayload.Id<ToggleAirflowDebugPayload> PAYLOAD_ID = new CustomPayload.Id<>(ID);
 
 

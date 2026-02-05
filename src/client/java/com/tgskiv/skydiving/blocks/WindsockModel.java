@@ -14,9 +14,9 @@ public class WindsockModel extends Model {
     public final ModelPart cone3;
     public final ModelPart cone4;
 
-    public static final Identifier STICK_TEXTURE = Identifier.of("skydivingmod", "textures/entity/brown_stick_texture.png");
-    public static final Identifier RED_TEXTURE = Identifier.of("skydivingmod", "textures/block/red_cone_texture.png");
-    public static final Identifier WHITE_TEXTURE = Identifier.of("skydivingmod", "textures/block/white_cone_texture.png");
+    public static final Identifier STICK_TEXTURE = Identifier.of("paraglidingsimulator", "textures/entity/brown_stick_texture.png");
+    public static final Identifier RED_TEXTURE = Identifier.of("paraglidingsimulator", "textures/block/red_cone_texture.png");
+    public static final Identifier WHITE_TEXTURE = Identifier.of("paraglidingsimulator", "textures/block/white_cone_texture.png");
 
 
     public WindsockModel(ModelPart root) {

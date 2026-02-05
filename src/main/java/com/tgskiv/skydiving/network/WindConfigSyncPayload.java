@@ -7,7 +7,7 @@ import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.util.Identifier;
 
 public record WindConfigSyncPayload(int ticksPerWindChange, double windRotationDegrees, double maxSpeedDelta, double maxWindSpeed, double minWindSpeed) implements CustomPayload {
-    public static final Identifier DATA_ID = Identifier.of("skydivingmod", "sync_config");
+    public static final Identifier DATA_ID = Identifier.of("paraglidingsimulator", "sync_config");
     public static final CustomPayload.Id<WindConfigSyncPayload> PAYLOAD_ID = new CustomPayload.Id<>(DATA_ID);
 
 

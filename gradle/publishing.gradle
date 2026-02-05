@@ -11,8 +11,8 @@ publishing {
 modrinth {
     token = env.getProperty("MODRINTH_TOKEN") // set in env variables
     projectId = "skydiving" // e.g., "skydiving-mod"
-    versionNumber = mod_version // from gradle.properties
-    versionName = "Skydiving Mod v$mod_version"
+    versionNumber = project.version.toString()
+    versionName = "Skydiving Mod v${project.version}"
     versionType = "release" // or "beta", "alpha"
     uploadFile = remapJar
     gameVersions = [minecraft_version]

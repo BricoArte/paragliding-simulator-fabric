@@ -1,9 +1,11 @@
 package com.tgskiv.skydiving.configuration;
 
 import com.google.gson.Gson;
-import com.tgskiv.SkydivingMod;
+import com.tgskiv.ParaglidingSimulator;
 import com.tgskiv.skydiving.network.WindConfigSyncPayload;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtList;
+import net.minecraft.nbt.NbtString;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
@@ -11,14 +13,29 @@ import net.minecraft.world.PersistentState;
 import net.minecraft.world.World;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 public class StateSaverAndLoader extends PersistentState {
 
     public SkydivingServerConfig skydivingConfig;
+    private Set<UUID> tutorialRecipients = new HashSet<>();
+
+    public boolean hasReceivedTutorial(UUID uuid) {
+        return tutorialRecipients.contains(uuid);
+    }
+
+    public void markTutorialReceived(UUID uuid) {
+        if (tutorialRecipients.add(uuid)) {
+            markDirty();
+        }
+    }
 
 
     public void updateSettingsWithPayload(WindConfigSyncPayload payload) {
 
-        LoggerFactory.getLogger("skydivingmod").info("updateSettingsWithPayload");
+        LoggerFactory.getLogger("paraglidingsimulator").info("updateSettingsWithPayload");
 
         skydivingConfig.ticksPerWindChange = payload.ticksPerWindChange();
         skydivingConfig.maxSpeedDelta = payload.maxSpeedDelta();
@@ -32,11 +49,17 @@ public class StateSaverAndLoader extends PersistentState {
     @Override
     public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
 
-        System.out.println("[SkydivingMod] Saving config: " + new Gson().toJson(skydivingConfig));
+        System.out.println("[paraglidingsimulator] Saving config: " + new Gson().toJson(skydivingConfig));
 
         Gson gson = new Gson();
         String json = gson.toJson(skydivingConfig);
         nbt.putString("skydivingConfig", json);
+
+        NbtList recipients = new NbtList();
+        for (UUID uuid : tutorialRecipients) {
+            recipients.add(NbtString.of(uuid.toString()));
+        }
+        nbt.put("tutorialRecipients", recipients);
 
         return nbt;
     }
@@ -50,12 +73,21 @@ public class StateSaverAndLoader extends PersistentState {
             Gson gson = new Gson();
             state.skydivingConfig = gson.fromJson(tag.getString("skydivingConfig"), SkydivingServerConfig.class);
 
-            System.out.println("[SkydivingMod] Loaded config: " + tag.getString("skydivingConfig"));
+            System.out.println("[paraglidingsimulator] Loaded config: " + tag.getString("skydivingConfig"));
 
         } else {
             state.skydivingConfig = new SkydivingServerConfig(); // fallback
 
-            System.out.println("[SkydivingMod] No config found, using defaults.");
+            System.out.println("[paraglidingsimulator] No config found, using defaults.");
+        }
+        if (tag.contains("tutorialRecipients")) {
+            NbtList recipients = tag.getList("tutorialRecipients", 8);
+            for (int i = 0; i < recipients.size(); i++) {
+                try {
+                    state.tutorialRecipients.add(UUID.fromString(recipients.getString(i)));
+                } catch (IllegalArgumentException ignored) {
+                }
+            }
         }
         return state;
     }
@@ -82,7 +114,7 @@ public class StateSaverAndLoader extends PersistentState {
         // The first time the following 'getOrCreate' function is called, it creates a brand new 'StateSaverAndLoader' and
         // stores it inside the 'PersistentStateManager'. The subsequent calls to 'getOrCreate' pass in the saved
         // 'StateSaverAndLoader' NBT on disk to our function 'StateSaverAndLoader::createFromNbt'.
-        StateSaverAndLoader state = serverWorld.getPersistentStateManager().getOrCreate(type, SkydivingMod.MOD_ID);
+        StateSaverAndLoader state = serverWorld.getPersistentStateManager().getOrCreate(type, ParaglidingSimulator.MOD_ID);
 
         // If state is not marked dirty, when Minecraft closes, 'writeNbt' won't be called and therefore nothing will be saved.
         // Technically it's 'cleaner' if you only mark state as dirty when there was actually a change, but the vast majority

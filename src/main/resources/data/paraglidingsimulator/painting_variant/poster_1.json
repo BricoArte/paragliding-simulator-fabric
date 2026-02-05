@@ -1,0 +1,13 @@
+﻿{
+  "asset_id": "paraglidingsimulator:poster_1",
+  "author": {
+    "color": "gray",
+    "translate": "painting.paraglidingsimulator.poster_1.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.paraglidingsimulator.poster_1.title"
+  },
+  "width": 2
+}

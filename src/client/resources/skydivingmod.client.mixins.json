@@ -1,4 +1,4 @@
-{
+﻿{
 	"required": true,
 	"package": "com.tgskiv.mixin.client",
 	"compatibilityLevel": "JAVA_21",

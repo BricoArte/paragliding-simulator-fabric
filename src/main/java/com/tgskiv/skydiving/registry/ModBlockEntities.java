@@ -1,7 +1,7 @@
 // src/main/java/com/example/skydiving/registry/ModBlockEntities.java
 package com.tgskiv.skydiving.registry;
 
-import com.tgskiv.SkydivingMod; // Your main mod class
+import com.tgskiv.ParaglidingSimulator; // Your main mod class
 import com.tgskiv.skydiving.blockentity.WindsockBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
@@ -17,11 +17,11 @@ public class ModBlockEntities {
     public static void registerBlockEntities() {
         WINDSOCK_BLOCK_ENTITY = Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
-                Identifier.of(SkydivingMod.MOD_ID, "windsock_block_entity"),
+                Identifier.of(ParaglidingSimulator.MOD_ID, "windsock_block_entity"),
                 FabricBlockEntityTypeBuilder.create(WindsockBlockEntity::new, ModBlocks.WINDSOCK).build()
         );
 
-        SkydivingMod.LOGGER.info("Registering ModBlockEntities for " + SkydivingMod.MOD_ID);
+        ParaglidingSimulator.LOGGER.info("Registering ModBlockEntities for " + ParaglidingSimulator.MOD_ID);
     }
 
 }

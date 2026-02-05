@@ -14,7 +14,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 
-import static com.tgskiv.SkydivingMod.MOD_ID;
+import static com.tgskiv.ParaglidingSimulator.MOD_ID;
 
 public class WindsockBlock extends BlockWithEntity implements BlockEntityProvider {
 

@@ -7,7 +7,7 @@ repositories {
 loom {
     splitEnvironmentSourceSets()
     mods {
-        "skydivingmod" {
+        "paraglidingsimulator" {
             sourceSet sourceSets.main
             sourceSet sourceSets.client
         }

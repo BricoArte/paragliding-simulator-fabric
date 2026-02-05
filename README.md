@@ -1,139 +1,159 @@
-# Paragliding/Skydiving Mod for Minecraft based on Fabric
+﻿# Paragliding Simulator (Fabric)
 
-<img align="left" alt="Mod logo" width="128" height="128" src="src/main/resources/assets/skydivingmod/icon.png">
+[Leer en espanol](README.es.md)
 
-A Minecraft Fabric mod that adds realistic **wind physics** affecting Elytra gliding.
+<img align="left" alt="Mod logo" width="128" height="128" src="src/main/resources/assets/paraglidingsimulator/icon.png">
 
-Being a skydiver myself, I noticed similarities between gliding with Elytras
-and skydiving with small canopies. I immediately decided to share the experience
-with friends.
+Minecraft Fabric mod that adds **realistic paragliding**, thermals, and launch sites with a dynamic wind system.  
+Based on **Skydiving Mod** by tgskiv, expanded with paraglider, thermals, and worldgen.
 
-Later, this mod was born as a simple toy to make Elytra flying a bit more fun.
+---
 
+## Features
 
-## ✨ Features
+- **Paraglider** with its own controllable flight physics.
+- **Realistic wind physics**: wind affects speed and drift. *(original from Skydiving Mod)*
+- **Dynamic wind**: direction and speed change gradually. *(original from Skydiving Mod)*
+- **Wind forecast** with upcoming changes. *(original from Skydiving Mod)*
+- **Server-client wind sync**. *(original from Skydiving Mod)*
+- **Windsock** to check wind direction. *(original from Skydiving Mod)*
+- **Thermals**: rising air columns with visible clouds.
+- **Launch sites (structures)**: natural takeoff points in high/mountain areas.
+- **HUD and vario/helmet sounds** configurable.
 
-- **Realistic flight physics**: Headwind slows you, tailwind boosts, crosswind drifts.
-- **Dynamic Wind Direction and Speed**: Wind rotates gradually (15° per change - can be set in the settings).
-- **Forecast System**: Maintains a forecast of 5 future wind changes (see Settings).
-- **Wind Sync**: Server-controlled wind synced to all clients.
-- **Console Commands**: See section below
-- **Faster falling when twisting fast**: By default, with elytra, you can twist around the same place and continue descending safely enough. In real skydiving, if you twist rapidly, you lose speed, thus losing handleability and falling dangerously fast.
-- **Wind cone**: You can either craft it (see section below), or use the command /give @p skydivingmod:windsock
-- **Low altitude wind influence**:
-  Wind strength will vary depending on your altitude above the terrain — lower altitudes will have less wind effect.
-  - 0-5 blocks - 30% effect
-  - 5-10 blocks - 50% effect
-  - 10+ blocks - 100% effect
-- **Settings**. Settings page with a persistent state
-- **Updrift and Downwash**
+Note: in the original mod, wind strongly affects elytra flight; in this mod that effect is reduced to give more focus to paragliding.
 
-  Air currents will push the player up or down based on vertical airflows, simulating thermals and sink zones.
-  - Raise when Players are above slopes or ridges which facing the wind.
-  - Falling when Players are above slopes or ridges against the wind.
+---
 
-  Effects are most strong when 20 blocks above the highest point in 5 block radius and gradually lose strength above and beyond this range
+## Requirements
 
+- **Minecraft** 1.21.2
+- **Fabric Loader** 0.16.14
+- **Fabric API** (required)
 
-## 🧪 Upcoming Features
+Optional recommended:
+- **Mod Menu** (shows Mods button and shortcuts)
+- **Cloth Config** (needed to open the full settings screen)
 
-Your help would be appreciated! 💖
+---
 
-1. **Biome-Aware Wind**
+## Installation
 
-   Different biomes will influence wind direction and intensity (e.g., deserts may have stronger gusts, forests more turbulence).
-   Raise during the daytime:
-   - Bare soil, dry grasslands, or any type of stone blocks slopes heat up quickly under the sun.
+1. Install Fabric Loader for 1.21.2.
+2. Put the mod .jar into `.minecraft/mods`.
+3. Install Fabric API (and Mod Menu/Cloth Config if you want advanced settings).
+4. Launch Minecraft.
 
-2. Player is getting dragged on the ground when it's speed is too high 
+---
 
-2. ~~**Weather-Driven Dynamics**~~
+## What the mod adds
 
-   ~~Rain, storms, and other weather conditions will dynamically alter wind behavior.~~
+Main items:
+- **Paraglider**: lets you fly with realistic control.
+- **Flight helmet**: shows HUD and allows configuration.
+- **Vario**: audio feedback for climb/sink.
+- **Windsock**: indicates wind direction. *(original from Skydiving Mod)*
+- **Poster/book**: quick flight guide.
 
-3. **Summon airplane** command
+---
 
-   It would be amazing to either cast a spell or use some radio to appear on the play flying high above.
+## Crafting and first steps
 
-## 🛠 Setup
+- Check recipes with **REI/JEI/EMI**.
+- Craft a **windsock** first to learn wind direction.
+- Prepare the **helmet** or **vario** for climb/sink feedback.
+- Craft the **paraglider** and take off from high ground.
+- Optional: search for **launch sites** in the mountains.
 
-This mod requires:
+---
 
-- **Fabric Loader** `0.16.14`
-- **Minecraft** `1.21.2`
+## Basic flight controls
 
-## Install
+- **Accelerate**: more speed, more sink.
+- **Brake**: reduces speed, less sink.
+- **Turn**: adjust heading to align with wind.
+- **Spin**: fast descent maneuver (use with care).
 
-Place the .jar file in your Minecraft mods/ folder (client and server).
+Tips:
+- Always take off **into the wind**.
+- Avoid spin close to the ground.
+- Use windward slopes and thermals to gain altitude.
 
-## Crafting
+---
 
-<img alt="Mod logo" width="200" height="" src="docs/crafting.png">
+## Launch site structures (worldgen)
 
-| | | |
-| - | - | - | 
-| Stick | White wool | Red wool |
-| Stick | White wool | |
-| Stick | | |
+- Generated in high/mountain terrain.
+- You will find a windsock, a training poster, and a chest.
+- If you cannot find one, you can use `/locate` or the mod test command (if you have permissions).
 
-## In-game 🎮 console commands
+---
 
-| Command                | Description                                                        |
-|------------------------|--------------------------------------------------------------------|
-| `/wind forecast`       | View upcoming 5 wind changes                                       |
-| `/wind again`          | If you don't like the forecast, you can regenerate future weather. |
-| `/wind hud true/false` | Show debug hud                                                     |
-| `/give @p skydivingmod:windsock` | Give player a windsock item                                        |
+## Thermals
 
-# Developers
+- Thermals are rising air columns.
+- They create small clouds at their top.
+- Cloud size depends on thermal size and strength.
+- Each day has a random variation in thermal size and max height.
+- Presets for **amount**, **intensity**, **height**, and **size**.
+- Configurable for performance or realism.
 
-## 🛠 Setup
+---
 
-This mod requires:
+## Configuration
 
-- **Fabric Loader** `0.16.14`
-- Minecraft `1.21.1`
+Two ways to open the menu:
+
+1. **From the flight helmet**: its menu shows the **"Mod Settings"** button.
+2. **From Mod Menu** (if installed): the "Mods" button in the main menu.
+
+If Cloth Config is missing, the button will warn in chat.
+
+---
+
+## Useful commands
+
+| Command | Description |
+| --- | --- |
+| `/wind forecast` | View the next 5 wind changes *(original from Skydiving Mod)* |
+| `/wind again` | Regenerate the forecast *(original from Skydiving Mod)* |
+| `/wind hud true/false` | Wind debug HUD *(original from Skydiving Mod)* |
+
+---
+
+## Performance and compatibility
+
+- Increasing thermal count or generation distance can reduce FPS.
+- If the Mods button is missing, install **Mod Menu**.
+- If settings do not open, install **Cloth Config**.
+
+---
+
+## Development (devs only)
+
+Requirements:
 - Java 21
 - Gradle 8
 
-
-## Build
+Build:
 
 ```bash
 ./gradlew build
 ```
 
-The mod .jar will be located in build/libs/.
+The generated .jar is in `build/libs/`.
 
+---
 
+## License
 
+This repository is licensed under **MIT** (see `LICENSE`).
 
-## 📦 Project Structure
+---
 
-* `SkydivingHandler` – main server logic, tick handler, command registration
-* `SkydivingModClient` – client wind application logic
-* `WindForecast` – forecast queue and generation logic
-* `WindChange` – simple data holder (direction + speed)
-* `WindSyncPacket` – server-to-client wind sync
-* `SkydivingConfig` – mod constants
-* `WindUtils` – helper functions (compass, clamping, etc.)
+## Credits
 
-## Tutorials used
+- Based on **Skydiving Mod** by **tgskiv**: https://github.com/tgskiv/skydiving-mod-fabric
+- Original code (wind, forecast, windsock, sync) comes from that project.
+- This mod extends it with paraglider, thermals, launch sites, and related gameplay.
 
-- https://wiki.fabricmc.net/tutorial:blocks
-- https://wiki.fabricmc.net/tutorial:blockentity
-- https://wiki.fabricmc.net/tutorial:blockentityrenderers
-- https://wiki.fabricmc.net/tutorial:custom_model
-- https://www.youtube.com/watch?v=qXkduRD61M4
-- https://www.youtube.com/watch?v=bOlbBOLfnfk
-- ChatGPT, of course
-
-## 🔗 License
-
-MIT – use freely, contribute freely.
-
-Built with ❤️ for future skydivers/paragliders!
-
-## Author
-
-https://github.com/tgskiv

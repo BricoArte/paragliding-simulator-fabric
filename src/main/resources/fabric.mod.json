@@ -1,36 +1,32 @@
-{
+﻿{
 	"schemaVersion": 1,
-	"id": "skydivingmod",
+	"id": "paraglidingsimulator",
 	"version": "${version}",
-	"name": "Skydiving Mod",
-	"description": "A Minecraft Fabric mod that adds realistic wind physics affecting only Elytra gliding.",
+	"name": "Paragliding Simulator",
+	"description": "A Minecraft Fabric mod for realistic paragliding and wind physics.",
 	"authors": [
-		"tgskiv@gmail.com"
+		"David Murillo"
 	],
 	"contact": {
-		"homepage": "https://github.com/tgskiv/",
-		"sources": "https://github.com/tgskiv/skydiving-mod-fabric"
+		"email": "bricoarte.david@gmail.com"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/skydivingmod/icon.png",
+	"license": "MIT",
+	"icon": "assets/paraglidingsimulator/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.tgskiv.SkydivingMod"
+			"com.tgskiv.ParaglidingSimulator"
 		],
 		"client": [
-			"com.tgskiv.SkydivingModClient"
+			"com.tgskiv.ParaglidingSimulatorClient"
 		],
 		"modmenu":[
-			"com.tgskiv.skydiving.menu.SkydivingModMenuIntegration"
+			"com.tgskiv.skydiving.menu.ParaglidingSimulatorMenuIntegration"
 		]
 	},
 	"mixins": [
-		"skydivingmod.mixins.json",
-		{
-			"config": "skydivingmod.client.mixins.json",
-			"environment": "client"
-		}
+		"paraglidingsimulator.mixins.json",
+		"paraglidingsimulator.client.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.14.21",
@@ -40,8 +36,7 @@
 		"java": ">=21",
 		"fabric-api": "*"
 	},
-	"suggests": {
-	},
+	"suggests": {},
 	"custom": {
 		"modmenu:api": "true"
 	}

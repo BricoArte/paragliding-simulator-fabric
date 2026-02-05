@@ -1,0 +1,21 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "group": "skydiving",
+  "category": "misc",
+  "pattern": [
+    "SWR",
+    "SW ",
+    "S  "
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "W": "minecraft:white_wool",
+    "R": "minecraft:red_wool"
+  },
+  "result": {
+    "id": "paraglidingsimulator:windsock",
+    "count": 1
+  },
+  "show_notification": true
+}
+

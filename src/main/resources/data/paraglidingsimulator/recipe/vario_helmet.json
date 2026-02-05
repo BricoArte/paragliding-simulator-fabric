@@ -1,0 +1,11 @@
+﻿{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+     "minecraft:iron_helmet" ,
+     "paraglidingsimulator:vario"
+  ],
+  "result": {
+    "id": "paraglidingsimulator:vario_helmet",
+    "count": 1
+  }
+}

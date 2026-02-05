@@ -1,0 +1,12 @@
+﻿{
+	"required": true,
+	"package": "com.tgskiv.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"SkydivingMixin",
+		"PaintingEntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

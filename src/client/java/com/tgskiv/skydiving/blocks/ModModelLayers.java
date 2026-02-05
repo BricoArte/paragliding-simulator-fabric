@@ -6,5 +6,8 @@ import net.minecraft.util.Identifier;
 public class ModModelLayers {
 
     public static final EntityModelLayer WINDSOCK_LAYER = new EntityModelLayer(
-            Identifier.of("skydivingmod", "windsock"), "main");
+            Identifier.of("paraglidingsimulator", "windsock"), "main");
+
+    public static final EntityModelLayer PARAGLIDER_LAYER = new EntityModelLayer(
+            Identifier.of("paraglidingsimulator", "paraglider"), "main");
 }

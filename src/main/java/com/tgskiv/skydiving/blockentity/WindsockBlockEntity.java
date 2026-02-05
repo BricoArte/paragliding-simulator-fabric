@@ -12,7 +12,7 @@ public class WindsockBlockEntity extends BlockEntity {
     }
 
     // This BlockEntity doesn't need to store wind data itself,
-    // as the renderer will fetch it directly from SkydivingModClient.
+    // as the renderer will fetch it directly from ParaglidingSimulatorClient.
     // Add NBT read/write methods if you add stored properties later.
 
     // Optional tick method if needed
