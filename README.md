@@ -28,18 +28,20 @@ Note: in the original mod, wind strongly affects elytra flight; in this mod that
 ## Requirements
 
 - **Minecraft** 1.21.2
-- **Fabric Loader** 0.16.14
+- **Fabric Loader** latest stable for Minecraft 1.21.2
 - **Fabric API** (required)
 
 Optional recommended:
 - **Mod Menu** (shows Mods button and shortcuts)
 - **Cloth Config** (needed to open the full settings screen)
+ 
+Tested with Fabric Loader 0.16.14 and 0.18.4.
 
 ---
 
 ## Installation
 
-1. Install Fabric Loader for 1.21.2.
+1. Install the latest stable Fabric Loader for 1.21.2.
 2. Put the mod .jar into `.minecraft/mods`.
 3. Install Fabric API (and Mod Menu/Cloth Config if you want advanced settings).
 4. Launch Minecraft.

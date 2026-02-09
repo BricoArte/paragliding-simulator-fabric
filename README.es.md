@@ -28,18 +28,20 @@ Nota: en el mod original el viento afecta el vuelo con elytras; en este mod ese 
 ## Requisitos
 
 - **Minecraft** 1.21.2
-- **Fabric Loader** 0.16.14
+- **Fabric Loader** ultima version estable para Minecraft 1.21.2
 - **Fabric API** (obligatorio)
 
 Opcionales recomendados:
 - **Mod Menu** (muestra el boton Mods y accesos directos)
 - **Cloth Config** (si quieres abrir la pantalla de configuracion completa)
 
+Probado con Fabric Loader 0.16.14 y 0.18.4.
+
 ---
 
 ## Instalacion
 
-1. Instala Fabric Loader para 1.21.2.
+1. Instala la ultima version estable de Fabric Loader para 1.21.2.
 2. Coloca el .jar del mod en `.minecraft/mods`.
 3. Instala Fabric API (y Mod Menu/Cloth Config si deseas ajustes avanzados).
 4. Inicia Minecraft.
