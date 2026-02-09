@@ -75,32 +75,13 @@ public class FlightUtils {
 
 
     public static void getSpinFallEffect(ClientPlayerEntity player) {
-        float currentYaw = player.getYaw();
-        float currentPitch = player.getPitch();
-
-        float yawDelta = Math.abs(currentYaw - lastYaw);
-        float pitchDelta = Math.abs(currentPitch - lastPitch);
-
-        lastYaw = currentYaw;
-        lastPitch = currentPitch;
-
-        angularSpeed = Math.sqrt(yawDelta * yawDelta + pitchDelta * pitchDelta);
-
-        // You can tune this threshold and scale factor
-        double threshold = 10.0;
-        if (angularSpeed > threshold) {
-            // MinecraftClient.getInstance().inGameHud.getChatHud().addMessage(Text.literal(String.format("angularSpeed %.2f", angularSpeed)));
-
-            spinFallDownwardBoost = (angularSpeed - threshold) * 0.01;
-
-        } else {
-            spinFallDownwardBoost = 0;
-        }
+        // Elytra spin-fall effect intentionally disabled in this mod variant.
+        spinFallDownwardBoost = 0;
+        angularSpeed = 0;
     }
 
     public static void applySpinFallEffect(ClientPlayerEntity player) {
-        Vec3d velocity = player.getVelocity();
-        player.setVelocity(velocity.x, velocity.y - spinFallDownwardBoost, velocity.z);
+        // Elytra spin-fall effect intentionally disabled.
     }
 
 

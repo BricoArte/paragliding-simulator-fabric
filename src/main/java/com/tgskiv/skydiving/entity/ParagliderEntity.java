@@ -57,7 +57,7 @@ public class ParagliderEntity extends Entity implements FlyingItemEntity {
     public static final int SPIN_TRIGGER_TICKS = 40; // 2s a 20 tps
     public static final int SPIN_RAMP_TICKS = 60; // tiempo hasta maximo
     public static final float SPIN_MAX_TURN_MULT = 1.8f;
-    public static final double SPIN_MAX_SINK_MULT = 6.0;
+    public static final double SPIN_MAX_SINK_MULT = 1.0;
 
     private int turnInput = 0; // -1,0,+1
     private float groundForward = 0f;

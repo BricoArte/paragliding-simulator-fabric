@@ -204,9 +204,6 @@ public class ParaglidingSimulatorClient implements ClientModInitializer {
 
             if (inFlight && inOverworld) FlightUtils.applyWindToPlayer(mc.player, WindInterpolator.getWindDirection(), WindInterpolator.getWindSpeed());
 
-			FlightUtils.getSpinFallEffect(mc.player);
-			if (inFlight) FlightUtils.applySpinFallEffect(mc.player);
-
             if (inOverworld) {
                 FlightUtils.getUpdraftEffect(mc.player, WindInterpolator.getWindDirection(), WindInterpolator.getWindSpeed());
             } else {
